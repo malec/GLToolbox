@@ -32,4 +32,7 @@ public:
 		float dz = diff[2];
 		return { x*dx, y*dy, z*dz };
 	}
+	static std::array<float, 2> projectPoint(std::array<float, 3> coordinates, float d) {
+		return { coordinates[0]/(coordinates[2]/d), coordinates[1]/(coordinates[2]/d) };
+	}
 };
