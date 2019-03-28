@@ -47,4 +47,7 @@ public:
 		b3 = x < 0 ? "1" : "0";
 		return stoi(b0 + b1 + b2 + b3);
 	}
+	static bool acceptOutcode(std::array<bool, 3> seg0, std::array<bool, 3> seg1) {
+		return !((seg0[0] && seg1[0]) || (seg0[1] && seg1[1]) || (seg0[2] && seg1[2]));
+	}
 };
