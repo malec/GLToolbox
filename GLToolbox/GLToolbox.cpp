@@ -23,4 +23,13 @@ public:
 		float z = coordinates[2];
 		return { x*cos(theta) - y * sin(theta), x*sin(theta) + y * cos(theta), z };
 	}
+	static std::array<float, 3> scale(std::array<float, 3> coordinates, std::array<float, 3> diff) {
+		float x = coordinates[0];
+		float y = coordinates[1];
+		float z = coordinates[2];
+		float dx = diff[0];
+		float dy = diff[1];
+		float dz = diff[2];
+		return { x*dx, y*dy, z*dz };
+	}
 };
