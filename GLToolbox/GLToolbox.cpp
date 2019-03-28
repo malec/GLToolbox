@@ -1,4 +1,5 @@
 #include <array>
+#include <string>
 
 static class GLToolbox {
 public:
@@ -34,5 +35,16 @@ public:
 	}
 	static std::array<float, 2> projectPoint(std::array<float, 3> coordinates, float d) {
 		return { coordinates[0]/(coordinates[2]/d), coordinates[1]/(coordinates[2]/d) };
+	}
+	static int outcode(std::array<float, 3> coordinates) {
+		float x = coordinates[0];
+		float y = coordinates[1];
+		float z = coordinates[2];
+		std::string b0, b1, b2, b3;
+		b0 = y > 1 ? "1" : "0";
+		b1 = y < 0 ? "1" : "0";
+		b2 = x > 1 ? "1" : "0";
+		b3 = x < 0 ? "1" : "0";
+		return stoi(b0 + b1 + b2 + b3);
 	}
 };
