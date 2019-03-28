@@ -1,0 +1,6 @@
+class GLToolbox {
+public:
+	GLToolbox() {
+
+	}
+};
