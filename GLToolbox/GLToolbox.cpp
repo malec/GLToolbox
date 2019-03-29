@@ -88,4 +88,11 @@ public:
 			count += vectorA[i] * vectorB[i];
 		return count;
 	}
+
+	static std::array<float, 3> crossProduct(std::array<float, 3> a, std::array<float, 3> b) {
+		float cx = a[1] * b[2] - a[2] * b[1];
+		float cy = a[2] * b[0] - a[0] * b[2];
+		float cz = a[0] * b[1] - a[1] * b[0];
+		return { cx, cy, cz };
+	}
 };
