@@ -7,26 +7,48 @@ public:
 	int main() {
 		auto testCoordinates0 = randCoord(-1, 1);
 		auto testCoordinates1 = randCoord(0, 1);
+		std::cout << "Using testCoordinates0 with value ";printArray(testCoordinates0);
+		std::cout << "Using testCoordinates1 with value "; printArray(testCoordinates1);
+		std::cout << "Translating testCoordinates0 by testCoordinates1 amount" << std::endl;
 		printArray(translate(testCoordinates0, testCoordinates1));
+		std::cout << "Rotating testCoordinates0 on X, Y, and Z by 90deg." << std::endl;
 		printArray(rotateX(testCoordinates0, 90));
 		printArray(rotateY(testCoordinates0, 90));
 		printArray(rotateZ(testCoordinates0, 90));
+		std::cout << "Scaling testCoordinates0 by testCoordinates1." << std::endl;
 		printArray(scale(testCoordinates0, testCoordinates1));
-		printCoords(projectPoint(testCoordinates0, myrand(0, 1)));
-		std::cout << outcode({ 3,3 }) << std::endl;;
-		std::cout << acceptSegment({ 0,0 }, { 3,3 }) << std::endl;
-		std::cout << discardSegment({ 3,3 }, { 4,4 }) << std::endl;
-		std::cout << clipSegemnt({ -2,-2 }, { 3,3 }) << std::endl;
-		printArray(normalize({ 4,4,4 }));
+		float randProject = myrand(0, 1);
+		std::cout << "Projecting testCoordinates0 by " << randProject << std::endl;
+		printPair(projectPoint(testCoordinates0, randProject));
+		std::array<float, 2> randPair0 = randPair(-1, 1);
+		std::cout << "Getting outcode for pair "; printPair(randPair0);
+		std::cout << outcode(randPair0) << std::endl;;
+		std::array<float, 2> randPair1 = randPair(-1, 1);
+		std::array<float, 2> randPair2 = randPair(-1, 1);
+		std::cout << "acceptSegment discardSegment and clipSegemnt for pair "; printPair(randPair1); std::cout << "and pair "; printPair(randPair2);
+		std::cout << acceptSegment(randPair1, randPair2) << std::endl;
+		std::cout << discardSegment(randPair1, randPair2) << std::endl;
+		std::cout << clipSegemnt(randPair1, randPair2) << std::endl;
+		std::array<float, 3> vector0 = { 4,4,4 };
+		std::cout << "Normalizing vector with values"; printArray(vector0);
+		printArray(normalize(vector0));
+		std::cout << "dotProduct, crossProduct, diffuseTerm, and idealReflection with testCoordinates0 and testCoordinates1";
 		std::cout << dotProduct(testCoordinates0, testCoordinates1) << std::endl;
 		printArray(crossProduct(testCoordinates0, testCoordinates1));
 		std::cout << diffuseTerm(testCoordinates0, testCoordinates1) << std::endl;
 		printArray(idealReflection(testCoordinates0, testCoordinates1));
-		std::cout << specularTerm(testCoordinates0, testCoordinates1, .5) << std::endl;
+		float randomP = myrand(-1, 1);
+		std::cout << "specularTerm with testCoordinates0 and testCoordinates1, value P is " << randomP << std::endl;
+		std::cout << specularTerm(testCoordinates0, testCoordinates1, randomP) << std::endl;
+		std::cout << "Done." << std::endl;
+		return 0;
 	}
 	static float myrand(float min, float max)
 	{
 		return rand() * (max - min) / RAND_MAX + min;
+	}
+	static std::array<float, 2> randPair(float min, float max) {
+		return { myrand(min, max), myrand(min, max) };
 	}
 	static std::array<float, 3> randCoord(float min, float max) {
 		return { myrand(min, max), myrand(min, max), myrand(min, max) };
@@ -138,7 +160,7 @@ public:
 		}
 	}
 private:
-	void printCoords(std::array<float, 2> c) {
+	void printPair(std::array<float, 2> c) {
 		std::cout << c[0] << ", " << c[1] << std::endl;
 	}
 	void printArray(std::array<float, 3> a) {
