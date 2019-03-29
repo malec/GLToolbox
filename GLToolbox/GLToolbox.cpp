@@ -51,56 +51,29 @@ public:
 		b3 = x < -1 ? 1 : 0;
 		return (b0 + b1 + b2 + b3);
 	}
-	static bool acceptOutcode(std::array<float, 2> seg0, std::array<float, 2> seg1) {
+	static bool acceptSegment(std::array<float, 2> seg0, std::array<float, 2> seg1) {
 		int code0 = outcode(seg0);
 		int code1 = outcode(seg1);
 		return !(code0 | code1);
 	}
 
-	static bool rejectOutcode(std::array< float, 2> seg0, std::array<float, 2> seg1) {
-		float ymin, xmin = -1;
-		float ymax, xmax = 1;
+	static bool discardSegment(std::array< float, 2> seg0, std::array<float, 2> seg1) {
 		int outcode0 = outcode(seg0);
 		int outcode1 = outcode(seg1);
-		while (true) {
+		return outcode0 & outcode1;
+	}
 
-			if (acceptOutcode(seg0, seg1)) {
-				return false;
-			}
-			else if (outcode0 & outcode1) {
-				return true;
-			}
-			else {
-				float x, y;
-				int outcodeOut = outcode0 ? outcode0 : outcode1;
-
-				if (outcodeOut & TOP) {
-					x = seg0[0] + (seg1[0] - seg0[0]) * (ymax - seg0[1]) / (seg1[1] - seg0[1]);
-					y = ymax;
-				}
-				else if (outcodeOut & BOTTOM) {
-					x = seg0[0] + (seg1[0] - seg0[0]) * (ymin - seg0[1]) / (seg1[1] - seg0[1]);
-					y = ymin;
-				}
-				else if (outcodeOut & RIGHT) {
-					y = seg0[1] + (seg1[1] - seg0[1]) * (xmax - seg0[0]) / (seg1[0] - seg0[0]);
-					x = xmax;
-				}
-				else if (outcodeOut & LEFT) {
-					y = seg0[1] + (seg1[1] - seg0[1]) * (xmin - seg0[0]) / (seg1[0] - seg0[0]);
-					x = xmin;
-				}
-				if (outcodeOut == outcode0) {
-					seg0[0] = x;
-					seg0[1] = y;
-					outcode0 = outcode(seg0);
-				}
-				else {
-					seg1[0] = x;
-					seg1[1] = y;
-					outcode1 = outcode(seg1);
-				}
-			}
+	static bool clipSegemnt(std::array< float, 2> seg0, std::array<float, 2> seg1) {
+		int outcode0 = outcode(seg0);
+		int outcode1 = outcode(seg1);
+		if (acceptSegment(seg0, seg1)) {
+			return false;
+		}
+		else if (outcode0 & outcode1) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 };
