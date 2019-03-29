@@ -1,0 +1,38 @@
+$ ./GLToolbox
+Using testCoordinates0 with value 0.680375, -0.211234, 0.566198
+Using testCoordinates1 with value 0.79844, 0.911647, 0.197551
+Translating testCoordinates0 by testCoordinates1 amount
+1.47882, 0.700413, 0.76375
+
+Rotating testCoordinates0 on X, Y, and Z by 90deg.
+0.680375, -0.411531, -0.442541
+0.201321, -0.211234, -0.861952
+-0.116016, 0.702902, 0.566198
+
+Scaling testCoordinates0 by testCoordinates1.
+0.543239, -0.192571, 0.111853
+
+Projecting testCoordinates0 by 0.335223
+0.402822, -0.125063
+
+Getting outcode for pair 3, 3
+10
+
+acceptSegment discardSegment and clipSegemnt for pair 1.32382, 0.864382
+,1.77323, 0.188707
+0
+1
+0
+
+Normalizing vector with values2.0536, 3.80892, 3.66478
+0.362149, 0.671695, 0.646277
+
+dotProduct, crossProduct, diffuseTerm, and idealReflection with testCoordinates0 and testCoordinates1 0.462521
+-0.557903, 0.317666, 0.78892
+0.462521
+-0.0788472, 0.89805, -0.417367
+
+specularTerm with testCoordinates0 and testCoordinates1, value P is 0.271423
+0.811164
+
+Done.
