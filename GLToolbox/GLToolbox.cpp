@@ -52,9 +52,9 @@ public:
 		return (b0 + b1 + b2 + b3);
 	}
 	static bool acceptOutcode(std::array<float, 2> seg0, std::array<float, 2> seg1) {
-		int code1 = outcode(seg0);
-		int code2 = outcode(seg1);
-		return !(code1 | code2);
+		int code0 = outcode(seg0);
+		int code1 = outcode(seg1);
+		return !(code0 | code1);
 	}
 
 	static bool rejectOutcode(std::array< float, 2> seg0, std::array<float, 2> seg1) {
