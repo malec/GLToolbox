@@ -76,4 +76,9 @@ public:
 			return true;
 		}
 	}
+
+	static std::array<float, 3> normalize(std::array<float, 3> vector) {
+		float length = sqrt(pow(vector[0], 2) + pow(vector[1], 2) + pow(vector[2], 2));
+		return { vector[0] / length, vector[1] / length, vector[2] / length };
+	}
 };
