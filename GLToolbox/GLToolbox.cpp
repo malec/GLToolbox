@@ -151,7 +151,7 @@ int main() {
 	std::cout << acceptSegment(randPair1, randPair2) << std::endl;
 	std::cout << discardSegment(randPair1, randPair2) << std::endl;
 	std::cout << clipSegemnt(randPair1, randPair2) << std::endl;
-	std::array<float, 3> vector0 = { 4,4,4 };
+	std::array<float, 3> vector0 = { myrand(0,4), myrand(0,4), myrand(0,4) };
 	std::cout << std::endl << "Normalizing vector with values"; printArray(vector0);
 	printArray(normalize(vector0));
 	std::cout << std::endl << "dotProduct, crossProduct, diffuseTerm, and idealReflection with testCoordinates0 and testCoordinates1 ";
