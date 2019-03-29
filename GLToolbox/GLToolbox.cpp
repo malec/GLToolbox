@@ -81,4 +81,11 @@ public:
 		float length = sqrt(pow(vector[0], 2) + pow(vector[1], 2) + pow(vector[2], 2));
 		return { vector[0] / length, vector[1] / length, vector[2] / length };
 	}
+
+	static float dotProduct(std::array<float, 3> vectorA, std::array<float, 3> vectorB) {
+		float count = 0;
+		for (int i = 0; i < vectorA.size(); i++)
+			count += vectorA[i] * vectorB[i];
+		return count;
+	}
 };
