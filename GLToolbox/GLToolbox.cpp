@@ -107,4 +107,14 @@ public:
 		float Rz = d * N[2];
 		return { Rx - L[0], Ry - L[1], Rz - L[2] };
 	}
+
+	static float specularTerm(std::array<float, 3> V, std::array<float, 3> R, float P) {
+		float spec = dotProduct(V, R);
+		if (spec > 0) {
+			return pow(spec, P);
+		}
+		else {
+			return 0;
+		}
+	}
 };
