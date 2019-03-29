@@ -95,4 +95,8 @@ public:
 		float cz = a[0] * b[1] - a[1] * b[0];
 		return { cx, cy, cz };
 	}
+
+	static float diffuseTerm(std::array<float, 3> L, std::array<float, 3> N) {
+		return dotProduct(L, N);
+	}
 };
