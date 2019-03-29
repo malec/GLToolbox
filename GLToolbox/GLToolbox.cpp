@@ -99,4 +99,12 @@ public:
 	static float diffuseTerm(std::array<float, 3> L, std::array<float, 3> N) {
 		return dotProduct(L, N);
 	}
+
+	static std::array<float, 3> idealReflection(std::array<float, 3> L, std::array<float, 3> N) {
+		float d = 2 * dotProduct(L, normalize(N));
+		float Rx = d * N[0];
+		float Ry = d * N[1];
+		float Rz = d * N[2];
+		return { Rx - L[0], Ry - L[1], Rz - L[2] };
+	}
 };
